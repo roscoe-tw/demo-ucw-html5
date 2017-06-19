@@ -104,6 +104,18 @@
 				     :source (list x))))
 	  (music self)))
 
+;;; canvas
+(defcomponent canvas (demo)
+  ())
+
+(defmethod render ((self canvas))
+  (call-next-method)
+  (<:div (<:canvas :width "300" :height "225")
+	 (<:as-html (format nil "test! canvas"))))
+
+
+;;; "test" component
+
 (defcomponent test ()
   ())
 
@@ -125,12 +137,12 @@
 					 :autoplay nil
 					 :source (list
 						  ;; (print-uri-to-string
-						  "static/b4283錄音關於C++.mp3")))
-						  ;; "static/愛著啊.mp3")))
+						  "static/b4283口譯錄音.mp3")))
+						  ;; "static/b4283口譯錄音.mp3")))
 						  ;; "aaa")))
 ;; "static/audio1.mp3")))
 ;; "static/audio2.mp3")))
-	  "Test CALL-COMPONENT/ANSWER-COMPONEMT AND <:AUDIO>"))))
+	  "Test CALL-COMPONENT/ANSWER-COMPONEMT AND <:AUDIO>"))
    ;; (<:li (<ucw:a
    ;; 	  :action
    ;; 	  (call-component $demo
@@ -140,14 +152,21 @@
    ;; 						 "static/audio1.mp3"
    ;; 						 "static/audio2.mp3")))
    ;; 	  "Test Multiple Audio!!"))))
+   (<:li (<ucw:a
+	  :action
+	  (call-component $demo
+			  (make-instance 'canvas
+					 :message "Test 'canvas'"))
+	  "test 'canvas'"))))
+
 
 (defentry-point "bbb" (:application *demo-ucw-application*) ()
-;;  (serve-file (merge-pathnames #p"static/愛著啊.mp3" *www-root-demo-ucw*)))
+;;  (serve-file (merge-pathnames #p"static/b4283口譯錄音.mp3" *www-root-demo-ucw*)))
   (serve-file (merge-pathnames #p"static/audio1.mp3" *www-root-demo-ucw*)))
 
 (defentry-point "aaa"
     (:application *demo-ucw-application*)
-    ((file (quri:url-encode "static/愛著啊.mp3")))
+    ((file (quri:url-encode "static/b4283口譯錄音.mp3")))
   (serve-file (uiop:merge-pathnames* (quri:url-decode file) *www-root-demo-ucw*)))
 	      ;; :content-type "audio/mpeg; charset=UTF-8"))
-;;  (serve-file (uiop:merge-pathnames* #p"愛著啊.mp3" *www-root-demo-ucw*)))
+;;  (serve-file (uiop:merge-pathnames* #p"b4283口譯錄音.mp3" *www-root-demo-ucw*)))
