@@ -120,17 +120,17 @@
 	  :action
 	  (call-component $demo
 			  (make-instance 'audio-play
-					 :message "Test CALL-COMPONENT/ANSWER-COMPONEMT AND <:AUDIO OK"
+					 :message "Test CALL-COMPONENT/ANSWER-COMPONEMT AND <:AUDIO> OK，使用的音源是 b4283 口譯  Bjarne Stroustrup 的談話"
 					 :controls t
 					 :autoplay nil
 					 :source (list
 						  ;; (print-uri-to-string
-						  "static/愛著啊.mp3")))
+						  "static/b4283錄音關於C++.mp3")))
 						  ;; "static/愛著啊.mp3")))
 						  ;; "aaa")))
 ;; "static/audio1.mp3")))
 ;; "static/audio2.mp3")))
-	  "Test CALL-COMPONENT/ANSWER-COMPONEMT AND <:AUDIO"))))
+	  "Test CALL-COMPONENT/ANSWER-COMPONEMT AND <:AUDIO>"))))
    ;; (<:li (<ucw:a
    ;; 	  :action
    ;; 	  (call-component $demo
